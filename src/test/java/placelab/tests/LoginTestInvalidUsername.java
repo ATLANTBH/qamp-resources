@@ -9,14 +9,12 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import placelab.utilities.WebDriverSetup;
 
-public class LoginTest {
+public class LoginTestInvalidUsername {
     public WebDriver driver;
     private String host = System.getProperty("host");
-    private String homePageUrl = "https://demo.placelab.com/dashboard/traffic";
+    private String invalidUsername = "invaliduser@notvalidusername.com";
     private String password = System.getProperty("password");
-    private String username = System.getProperty("username");
-    private String user = "Damir Čović";
-    private String userRole = "Group Admin";
+    private String credentialsError = "Invalid credentials!";
 
     //Specify the driver and browser that will be used for this scenario
 
@@ -28,7 +26,7 @@ public class LoginTest {
     //Actual test case implementation
 
     @Test
-    public void testLoginPage() {
+    public void testLoginWithInvalidUsername() {
 
         //Go to PlaceLab demo app
         driver.navigate().to(host);
@@ -37,9 +35,9 @@ public class LoginTest {
         Assert.assertEquals(driver.getCurrentUrl(), host);
         Assert.assertEquals(driver.getTitle(), "PlaceLab");
 
-        //fill out login parameters
+        //fil out only e-mail parameters
         WebElement enterUsername = driver.findElement(By.id("email"));
-        enterUsername.sendKeys(username);
+        enterUsername.sendKeys(invalidUsername);
 
         WebElement enterPassword = driver.findElement(By.id("password"));
         enterPassword.sendKeys(password);
@@ -48,25 +46,11 @@ public class LoginTest {
         WebElement submit = driver.findElement(By.xpath("//input[@type='submit']"));
         submit.click();
 
-        //Validate that user is successfully logged in
-        Assert.assertEquals(driver.getCurrentUrl(),homePageUrl);
-        try {
-            WebElement userName = driver.findElement(By.id("user-name"));
-            assert (userName.getText().contains(user));
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Expected user is not logged in!");
-        }
+        //Validate that the user cannot sign in with username only
+        Assert.assertEquals(driver.getCurrentUrl(),host);
 
-        //Validate that user has right user role
-        try {
-            WebElement role = driver.findElement(By.id("user-role"));
-            assert (role.getText().contains(userRole));
-            throw new RuntimeException("Expected user role is not correct!");
-        } catch (RuntimeException m) {
-            m.printStackTrace();
-        }
-
+        WebElement error = driver.findElement(By.xpath("//div[@class = 'error-area']"));
+        error.getText().contains(credentialsError);
     }
 
     //Clean up - close the browser

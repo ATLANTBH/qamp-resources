@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Smoke Test]" guice-stage="DEVELOPMENT" verbose="0">
+  <test name="Login(failed)">
+    <classes>
+      <class name="placelab.tests.LoginTestNoUsername">
+        <methods>
+          <include name="initDriver"/>
+          <include name="quitDriver"/>
+        </methods>
+      </class> <!-- placelab.tests.LoginTestNoUsername -->
+      <class name="placelab.tests.LoginTestTermsOfUse">
+        <methods>
+          <include name="quitDriver"/>
+          <include name="initDriver"/>
+        </methods>
+      </class> <!-- placelab.tests.LoginTestTermsOfUse -->
+      <class name="placelab.tests.LoginTestResetPassword">
+        <methods>
+          <include name="initDriver"/>
+          <include name="quitDriver"/>
+        </methods>
+      </class> <!-- placelab.tests.LoginTestResetPassword -->
+      <class name="placelab.tests.LoginTestNoPassword">
+        <methods>
+          <include name="quitDriver"/>
+          <include name="initDriver"/>
+        </methods>
+      </class> <!-- placelab.tests.LoginTestNoPassword -->
+      <class name="placelab.tests.LoginTest">
+        <methods>
+          <include name="initDriver"/>
+          <include name="testLoginPage"/>
+          <include name="quitDriver"/>
+        </methods>
+      </class> <!-- placelab.tests.LoginTest -->
+    </classes>
+  </test> <!-- Login(failed) -->
+</suite> <!-- Failed suite [Smoke Test] -->

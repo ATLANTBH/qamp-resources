@@ -11,7 +11,10 @@
         <maven.compiler.version>3.10.1</maven.compiler.version>
         <maven.version>3.6.1</maven.version>
         <testng.version>6.10</testng.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <host>https://demo.placelab.com/</host>
+        <username>co.damir@gmail.com</username>
+        <password>password</password>
     </properties>
     <profiles>
         <profile>
@@ -37,6 +40,8 @@
                             </suiteXmlFiles>
                             <systemPropertyVariables>
                                 <host>${host}</host>
+                                <username>${username}</username>
+                                <password>${password}</password>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
@@ -94,6 +99,8 @@
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <host>${host}</host>
+                        <username>${username}</username>
+                        <password>${password}</password>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

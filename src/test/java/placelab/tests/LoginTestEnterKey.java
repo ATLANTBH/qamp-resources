@@ -1,6 +1,7 @@
 package placelab.tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -9,13 +10,13 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import placelab.utilities.WebDriverSetup;
 
-public class LoginTest {
+public class LoginTestEnterKey {
     public WebDriver driver;
     private String host = System.getProperty("host");
     private String homePageUrl = "https://demo.placelab.com/dashboard/traffic";
     private String password = System.getProperty("password");
     private String username = System.getProperty("username");
-    private String user = "Damir Čović";
+    private String user = "Damir";
     private String userRole = "Group Admin";
 
     //Specify the driver and browser that will be used for this scenario
@@ -37,16 +38,16 @@ public class LoginTest {
         Assert.assertEquals(driver.getCurrentUrl(), host);
         Assert.assertEquals(driver.getTitle(), "PlaceLab");
 
-        //fill out login parameters
+        //fil out login parameters
         WebElement enterUsername = driver.findElement(By.id("email"));
         enterUsername.sendKeys(username);
 
         WebElement enterPassword = driver.findElement(By.id("password"));
         enterPassword.sendKeys(password);
 
-        //Click on Login button
+        //Validate if Login button works with pressing Enter key on keyboard
         WebElement submit = driver.findElement(By.xpath("//input[@type='submit']"));
-        submit.click();
+        submit.sendKeys(Keys.RETURN);
 
         //Validate that user is successfully logged in
         Assert.assertEquals(driver.getCurrentUrl(),homePageUrl);

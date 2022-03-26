@@ -1,0 +1,5 @@
+placelab\tests\LoginTest.class
+placelab\utilities\WebDriverSetup.class
+placelab\tests\LoginTestEmptyUsername.class
+placelab\tests\LoginTestResetPassword.class
+placelab\tests\LoginTestTermsOfUse.class
