@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Smoke Test">
-    <test name="Login">
+<suite name="Login Tests"  parallel="tests" thread-count="3">
+
+
+    <test name="Login Firefox">
+        <parameter name="browser" value="firefox"/>
+        <groups>
+           <run>
+               <include name="Positive"/>
+               <include name="Negative"/>
+           </run>
+       </groups>
+    <classes>
+        <class name="placelab.tests.LoginTest">
+        </class>
+    </classes>
+    </test>
+
+    <test name="Login Edge">
+        <parameter name="browser" value="edge"/>
+
+        <groups>
+            <run>
+                <include name="Positive"/>
+                <include name="Negative"/>
+            </run>
+        </groups>
         <classes>
             <class name="placelab.tests.LoginTest">
             </class>
