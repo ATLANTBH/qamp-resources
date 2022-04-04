@@ -15,7 +15,14 @@
         <username>islagalo1@etf.unsa.ba</username>
         <password>@d6BfYue</password>
         <home>https://demo.placelab.com/dashboard/traffic</home>
+    <queries>
+        https://demo.placelab.com/queries
+    </queries>
+        <repURL>
+            https://demo.placelab.com/traffic_incidents/incident_aggregated_reports/new
+        </repURL>
     </properties>
+
     <profiles>
         <profile>
             <id>serial</id>

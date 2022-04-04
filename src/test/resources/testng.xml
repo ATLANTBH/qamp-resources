@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Login Tests"  parallel="tests" thread-count="3">
-
+<suite name="Login Tests"  parallel="none" thread-count="3">
 
     <test name="Login Firefox">
         <parameter name="browser" value="firefox"/>
@@ -12,8 +11,15 @@
            </run>
        </groups>
     <classes>
-        <class name="placelab.tests.LoginTest">
+        <class name="placelab.tests.PlacelabTest">
         </class>
+        <class name="placelab.pages.LoginPage">
+
+        </class>
+        <class name="placelab.pages.Page">
+
+        </class>
+
     </classes>
     </test>
 
@@ -27,7 +33,13 @@
             </run>
         </groups>
         <classes>
-            <class name="placelab.tests.LoginTest">
+            <class name="placelab.tests.PlacelabTest">
+            </class>
+            <class name="placelab.pages.LoginPage">
+
+            </class>
+            <class name="placelab.pages.Page">
+
             </class>
         </classes>
     </test>
