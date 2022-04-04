@@ -12,7 +12,17 @@
         <maven.version>3.6.1</maven.version>
         <testng.version>6.10</testng.version>
         <host>https://demo.placelab.com/</host>
+        <username>islagalo1@etf.unsa.ba</username>
+        <password>@d6BfYue</password>
+        <home>https://demo.placelab.com/dashboard/traffic</home>
+    <queries>
+        https://demo.placelab.com/queries
+    </queries>
+        <repURL>
+            https://demo.placelab.com/traffic_incidents/incident_aggregated_reports/new
+        </repURL>
     </properties>
+
     <profiles>
         <profile>
             <id>serial</id>
@@ -37,6 +47,10 @@
                             </suiteXmlFiles>
                             <systemPropertyVariables>
                                 <host>${host}</host>
+                                <username>${username}</username>
+                                <password>${password}</password>
+                                <home>${home}</home>
+
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
@@ -53,24 +67,24 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
+            <version>7.5</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
+            <version>5.3.17</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
+            <version>5.3.17</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>4.2.0</version>
+            <version>5.1.0</version>
         </dependency>
     </dependencies>
     <build>
@@ -93,7 +107,11 @@
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
+
                         <host>${host}</host>
+                        <username>${username}</username>
+                        <password>${password}</password>
+                        <home>${home}</home>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
