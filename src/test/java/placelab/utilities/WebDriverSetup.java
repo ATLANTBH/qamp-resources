@@ -3,6 +3,7 @@ package placelab.utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.opera.OperaDriver;
 
 public class WebDriverSetup {
 
@@ -10,6 +11,8 @@ public class WebDriverSetup {
         switch (browserName.toLowerCase()) {
             case "chrome":
                 return getChromeDriver();
+            case "opera":
+                return getOperaDriver();
             default:
                 throw new IllegalArgumentException("Match case not found for browser: "
                         + browserName);
@@ -19,5 +22,10 @@ public class WebDriverSetup {
     private static WebDriver getChromeDriver() {
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
+    }
+
+    private static WebDriver getOperaDriver() {
+        WebDriverManager.operadriver().setup();
+        return new OperaDriver();
     }
 }

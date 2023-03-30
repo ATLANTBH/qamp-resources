@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "fa145bb4-387a-41ed-a493-24f347e96d1d",
+		"name": "PlaceLab_API_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generate Auth Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseJson = JSON.parse(responseBody);",
+							"pm.environment.set(\"token\", responseJson.api_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "email",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/api/v2/sessions",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Report",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseJson = JSON.parse(responseBody);",
+							"pm.environment.set(\"id\", responseJson.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/api/v2/reports/data_extraction?name=Data%20Extraction%20Report&country_code=US&s3_path=s3://abhi-data-extraction-prod/QA Academy/input-files/places_sample_file.txt",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"reports",
+						"data_extraction"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Data%20Extraction%20Report"
+						},
+						{
+							"key": "country_code",
+							"value": "US"
+						},
+						{
+							"key": "s3_path",
+							"value": "s3://abhi-data-extraction-prod/QA Academy/input-files/places_sample_file.txt"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/api/v2/reports/{{id}}/status",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"reports",
+						"{{id}}",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Results",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/api/v2/reports/{{id}}/download",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"reports",
+						"{{id}}",
+						"download"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
