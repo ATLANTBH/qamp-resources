@@ -11,6 +11,10 @@
         <maven.compiler.version>3.10.1</maven.compiler.version>
         <maven.version>3.6.1</maven.version>
         <testng.version>6.10</testng.version>
+        <homepage>https://demo.placelab.com/queries</homepage>
+        <username>email</username>
+        <password>password</password>
+        <user>Test User</user>
         <host>https://demo.placelab.com/</host>
     </properties>
     <profiles>
@@ -36,6 +40,10 @@
                                 <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                             </suiteXmlFiles>
                             <systemPropertyVariables>
+                                <homepage>${homepage}</homepage>
+                                <password>${password}</password>
+                                <username>${username}</username>
+                                <user>${user}</user>
                                 <host>${host}</host>
                             </systemPropertyVariables>
                         </configuration>
@@ -93,6 +101,10 @@
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
+                        <homepage>${homepage}</homepage>
+                        <password>${password}</password>
+                        <username>${username}</username>
+                        <user>${user}</user>
                         <host>${host}</host>
                     </systemPropertyVariables>
                 </configuration>
